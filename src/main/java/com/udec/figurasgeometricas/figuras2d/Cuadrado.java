@@ -8,24 +8,41 @@ import java.util.Scanner;
 
 /**
  *
- * @author michl
+ * @author Michael Cardenas
+ * clase hija que hereda de la padre e implementa metodos de una interface y los especializa
  */
 public class Cuadrado extends FiguraBidimensional{
     
     
+    /**
+     * constructor que inicializa objetos de la clase
+     */
     public Cuadrado(){
         super();
     }
+    
+    /**
+     * calcula el area es un metodo especializaado en esta clase que viene de una interface
+     * @return devuelve el resultado final 
+     */
 
     @Override
     public double hallarArea() {
         return Math.pow(getLado(),2);
     }
 
+    /**
+     * metodo especializado que viene de una interface
+     * @return devuelve el resultado final
+     */
     @Override
     public double hallarPerimetro() {
         return getLado()*4;
     }
+    
+    /**
+     * metodo especializado que se usa para pedir los datos al usuario
+     */
 
     @Override
     public void pedirDatos() {
@@ -34,6 +51,9 @@ public class Cuadrado extends FiguraBidimensional{
         setLado(sc.nextDouble());
     }
 
+    /**
+     * metodo especializado para imprimir los resultadoss finales
+     */
     @Override
     public void imprimir() {
         setArea(hallarArea());

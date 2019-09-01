@@ -7,10 +7,19 @@ package com.udec.figurasgeometricas.interfaces;
 
 /**
  *
- * @author michl
+ * @author Michael Cardenas
+ * interface con metodos publicos que la implentaran tanto las 2d como las 3d
+ * clave para la lista de objetos
  */
 public interface IPedirDatos {
     
+    /**
+     * metodo sin especializar que lo haran todas las clases hijas 2d y 3d
+     */
     public void pedirDatos();
+    
+    /**
+     * metodo sin especializar que lo haran todas las clases hijas 2d y 3d
+     */
     public void imprimir();
 }

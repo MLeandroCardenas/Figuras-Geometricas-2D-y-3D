@@ -7,9 +7,19 @@ package com.udec.figurasgeometricas.interfaces;
 
 /**
  *
- * @author michl
+ * @author Michael Cardenas
+ * interface con metodos publicos que implementara la clase padre de las figuras 2d y sus hijas
  */
 public interface IMetodos2d {
+    /**
+     * metodo publico sin especializar que lo haran las hijas
+     * @return devuelve el area 
+     */
+    
     public double hallarArea();
+    /**
+     * metodo publico sin especializar que lo haran las hijas
+     * @return devuelve el perimetro
+     */
     public double hallarPerimetro();
 }

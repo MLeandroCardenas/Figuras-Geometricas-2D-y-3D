@@ -8,19 +8,39 @@ import com.udec.figurasgeometricas.interfaces.IMetodos2d;
 import com.udec.figurasgeometricas.interfaces.IPedirDatos;
 /**
  *
- * @author michl
+ * @author Michael Cardenas
+ * clase padre que sirve como esqueleto y tiene todo lo comun de las hijas
+ * implementa dos interfaces
  */
 
 public abstract class FiguraBidimensional implements IMetodos2d,IPedirDatos {
     
+    /**
+     * atributo en comunn de las hijas
+     */
     private double lado;
+    
+    /**
+     * atributo en comunn de las hijas
+     */
     private double area;
+    
+    /**
+     * atributo en comunn de las hijas
+     */
     private double perimetro;
 
+    /**
+     * constructor de la clase
+     */
     public FiguraBidimensional() {
     }
     
     
+    /**
+     * metodos publicos para que las hijas puedan acceder a los atributos de la clase
+     * @return 
+     */
     public double getLado() {
         return lado;
     }
