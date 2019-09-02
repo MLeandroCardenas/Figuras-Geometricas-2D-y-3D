@@ -84,7 +84,7 @@ public class Circulo extends FiguraBidimensional {
         setArea(hallarArea());
         setPerimetro(hallarPerimetro());
         double longitudAux = hallarLongitud();
-        System.out.println("Eligio circulo su area es de -> " +getArea() + 
-                " su perimetro es de -> " +getPerimetro() + " su longitud es de -> " + longitudAux);
+        System.out.println("Eligio circulo su area es de -> " +getArea() + " cm2" +  
+                " su perimetro es de -> " +getPerimetro() + " cm " +  " su longitud es de -> " + longitudAux + " cm");
     }
 }

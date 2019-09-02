@@ -71,20 +71,19 @@ public class Rectangulo extends FiguraBidimensional {
         if(getLado()==ladoB){
             System.out.println("No es un rectangulo... un lado debe ser mayor al otro");
         }
-            
     }
-
     
     /**
      * metodo especiaizado para imprimir los resultados finales
      */
     @Override
     public void imprimir() {
-        setArea(hallarArea());
-        setPerimetro(hallarPerimetro()); 
         if(getLado()==ladoB)
             System.out.println("No es rectangulo");
-        else
-            System.out.println("Eligio rectangulo: su area es de + " + getArea() + " y su perimetro es de " + getPerimetro());
+        else{
+            setArea(hallarArea());
+            setPerimetro(hallarPerimetro()); 
+            System.out.println("Eligio rectangulo: su area es de " + getArea() + " cm2" + " y su perimetro es de " + getPerimetro() + " cm");
+        }
     }
 }

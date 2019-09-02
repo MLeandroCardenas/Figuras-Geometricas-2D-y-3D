@@ -38,7 +38,7 @@ public class Esfera extends FiguraTridimensional {
     public void imprimir() {
         setVolumen(hallarVolumen());
         setArea(hallarArea());
-        System.out.println("Eligio esfera: su volumen es de " + getVolumen() + " y su area es de " + getArea());
+        System.out.println("Eligio esfera: su volumen es de " + getVolumen() + " cm3" + " y su area es de " + getArea() + " cm2");
     }
 
     /**

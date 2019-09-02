@@ -59,6 +59,6 @@ public class Cuadrado extends FiguraBidimensional{
         setArea(hallarArea());
         setPerimetro(hallarPerimetro());
         
-        System.out.println("Eligio cuadrado: su area es de-> " + getArea() + " y su perimetro es de " + getPerimetro());
+        System.out.println("Eligio cuadrado: su area es de-> " + getArea() + " cm2" + " y su perimetro es de " + getPerimetro() + " cm");
     }
 }

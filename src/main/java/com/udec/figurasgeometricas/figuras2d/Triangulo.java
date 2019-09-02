@@ -16,13 +16,12 @@ public class Triangulo extends FiguraBidimensional {
     /**
      * atributo unico de esta clase
      */
-    private double base;
+    private double ladoB;
     
     /**
      * atributo unico de esta clase
      */
-    private double altura;
-    
+    private double ladoC;
     
     /**
      * constructor de la clase vacio para inicializar
@@ -36,7 +35,15 @@ public class Triangulo extends FiguraBidimensional {
      */
     @Override
     public double hallarArea() {
-        return (base*altura)/2;
+        double semiperimetro,areaAux,semiladoA,semiLadoB,semiLadoC;
+        
+        semiperimetro = (getLado()+ladoB+ladoC)/2;
+        semiladoA = semiperimetro-getLado();
+        semiLadoB = semiperimetro-ladoB;
+        semiLadoC = semiperimetro-ladoC;
+        
+        areaAux = Math.sqrt(semiperimetro*(semiladoA)*(semiLadoB)*(semiLadoC));
+        return areaAux;
     }
 
     /**
@@ -45,8 +52,14 @@ public class Triangulo extends FiguraBidimensional {
      */
     @Override
     public double hallarPerimetro() {
-        setLado(Math.sqrt(Math.pow(base,2)+Math.pow(altura,2)));
-        return  getLado()+base+altura;
+       String tipo = decirTipoTrianqulo(getLado(),ladoB, ladoC);
+       if(tipo.equals("Triangulo equilatero"))
+           return 3*getLado();
+       else if(tipo.equals("Triangulo isosceles"))
+           return 2*getLado()+ladoB;
+       else if(tipo.equals("Triangulo escaleno")) 
+           return getLado()+ladoB+ladoC;    
+        return 0.0;
     }
     
     /**
@@ -55,13 +68,15 @@ public class Triangulo extends FiguraBidimensional {
      * @param lado2 recibe un lado del triangulo
      * @param lado3 recibe un lado del triangulo
      */
-    public void decirTipoTrianqulo(double lado1,double lado2, double lado3){
+    public String decirTipoTrianqulo(double lado1,double lado2, double lado3){
         if(lado1==lado2&lado1==lado3&lado2==lado3)
-            System.out.println("Es un triagulo equilatero");
+            return "Triangulo equilatero";
         else if(lado1==lado2|lado1==lado3|lado2==lado3)
-            System.out.println("Es un triagulo isosceles");
+            return "Triangulo isosceles";
         else if(lado1!=lado2&lado1!=lado3&lado2!=lado3)
-            System.out.println("Es un triagulo escaleno");
+            return "Triangulo escaleno";
+        
+        return "";
     }
 
     /**
@@ -70,33 +85,35 @@ public class Triangulo extends FiguraBidimensional {
     @Override
     public void pedirDatos() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Digite la base: ");
-        base = sc.nextDouble();
-        System.out.println("Digite la altura: ");
-        altura = sc.nextDouble();
+        System.out.println("Digite el lado 1");
+        setLado(sc.nextDouble());
+        System.out.println("Digite el lado 2");
+        ladoB = sc.nextDouble();
+        System.out.println("Digite el lado 3");
+        ladoC = sc.nextDouble();
     }
     
-
     /**
      * metodos publicos para acceder a los atributos privados de la clase
      * @return 
      */
-    public double getBase() {
-        return base;
+
+    public double getLadoB() {
+        return ladoB;
     }
 
-    public void setBase(double base) {
-        this.base = base;
+    public void setLadoB(double ladoB) {
+        this.ladoB = ladoB;
     }
 
-    public double getAltura() {
-        return altura;
+    public double getLadoC() {
+        return ladoC;
     }
 
-    public void setAltura(double altura) {
-        this.altura = altura;
+    public void setLadoC(double ladoC) {
+        this.ladoC = ladoC;
     }
-
+    
     /**
      * metodo especializado para imprimir los resultados finales 
      */
@@ -104,8 +121,8 @@ public class Triangulo extends FiguraBidimensional {
     public void imprimir() {
         setArea(hallarArea());
         setPerimetro(hallarPerimetro());
-        System.out.println("Eligio triangulo: su area es de " + getArea() + " su perimetro es de " + getPerimetro());
+        System.out.println("Eligio triangulo: su area es de " + getArea() +" cm2 " + " su perimetro es de " + getPerimetro() + " cm");
         System.out.println("Su clasificacion es: ");
-        decirTipoTrianqulo(base, altura, getLado());
+        System.out.println(decirTipoTrianqulo(getLado(),ladoB,ladoC));
     }
 }

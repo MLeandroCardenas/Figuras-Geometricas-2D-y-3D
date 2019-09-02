@@ -23,61 +23,29 @@ public class Menu {
      */
     ArrayList<IPedirDatos> general;
     
-    /**
-     * objeto tipo clase de la clase Cuadrado para llamar al metodo donde se piden los datos
-     */
-    Cuadrado cuadrado;
     
     /**
-     * objeto tipo clase de la clase Circulo para llamar al metodo donde se piden los datos
+     * controla el menu que se le muestra al usuario
      */
-    Circulo circulo;
+    private boolean opcion;
     
     /**
-     * objeto tipo clase de la clase Rectangulo para llamar al metodo donde se piden los datos
+     * es la opcion que elige el usuario
      */
-    Rectangulo rectangulo;
-    
-    /**
-     * objeto tipo clase de la clase Triangulo para llamar al metodo donde se piden los datos
-     */
-    Triangulo triangulo;
-    
-    /**
-     * objeto tipo clase de la clase Cubo para llamar al metodo donde se piden los datos
-     */
-    Cubo cubo;
-    
-    /**
-     * objeto tipo clase de la clase Esfera para llamar al metodo donde se piden los datos
-     */
-    Esfera esfera;
-    
-    /**
-     * objeto tipo clase de la clase Piramide para llamar al metodo donde se piden los datos
-     */
-    Piramide piramide;
+    private byte eleccion;
     
     /**
      *constructor vacio de la clase que inicializa el objeto 
      */
     public Menu() {
-        cuadrado = new Cuadrado();
-        circulo = new Circulo();
-        rectangulo = new Rectangulo();
-        triangulo = new Triangulo();
-        cubo = new Cubo();
-        esfera = new Esfera();
-        piramide = new Piramide();
         general = new ArrayList<>();
     }
 
     /**
-     * Metodo que tiene el menu principal y le muestra al usuario las opciones
+     * metodo propio para mostrarle la opcion al usuario
      */
-    public void opciones(){
-        boolean opcion = true;
-        byte opciones;
+    public void menu(){
+        opcion = true;
         while(opcion){
             Scanner teclado = new Scanner(System.in);
            System.out.println("\t FIGURAS GEOMETRICAS \t");
@@ -91,45 +59,40 @@ public class Menu {
             System.out.println("\t 7. Piramide \t");
             System.out.println("\t 8. Salir \t");
             
-            opciones = teclado.nextByte();
-            
-            switch(opciones){
-                case 1:
-                    cuadrado.pedirDatos();
-                    general.add(cuadrado);
-                    break;
-                case 2:
-                    rectangulo.pedirDatos();
-                    general.add(rectangulo);
-                    break;
-                case 3:
-                    circulo.pedirDatos();
-                    general.add(circulo);
-                    break;
-                case 4:
-                    triangulo.pedirDatos();
-                    general.add(triangulo);
-                    break;
-                case 5:
-                    cubo.pedirDatos();
-                    general.add(cubo);
-                    break;
-                case 6:
-                    esfera.pedirDatos();
-                    general.add(esfera);
-                    break;
-                case 7:
-                    piramide.pedirDatos();
-                    general.add(piramide);
-                    break;
-                default:
-                    opcion=false;
-                    recorrerArreglo();
-            }
+            eleccion = teclado.nextByte();
+            opcionesDos(eleccion,opcion);
         }
     }
-    
-    
+    /**
+     * Metodo que tiene el menu principal y le muestra al usuario las opciones
+     */
+    public void opcionesDos(byte eleegir,boolean estado){
+            switch(eleegir){
+                case 1: 
+                    crearCuadrado();
+                    break;
+                case 2: 
+                    crearRectangulo();
+                    break;
+                case 3: 
+                    crearCirculo();
+                    break;
+                case 4: 
+                    crearTriangulo();
+                    break;
+                case 5: 
+                    crearCubo();
+                    break;
+                case 6: 
+                    crearEsfera();
+                    break;
+                case 7: 
+                    crearPiramide();
+                    break;
+                default: 
+                    porDefecto(estado);
+            }
+        }   
     /**
      * metodo que recorre la lista de objetos e imprime los resultados dependiendo de la instancia que llego
      */
@@ -150,5 +113,99 @@ public class Menu {
             else
                 ((Piramide) objecto).imprimir();
         }
+    }
+    
+    
+    /**
+     * metodo para crear el objeto de la clase Cuadrado
+     */
+    private void crearCuadrado(){
+        Cuadrado cuadrado = new Cuadrado();
+        cuadrado.pedirDatos();
+        general.add(cuadrado);
+    }
+    
+    /**
+     * metodo para crear el objeto de la clase Rectangulo
+     */
+    private void crearRectangulo(){
+        Rectangulo rectangulo = new Rectangulo();
+        rectangulo.pedirDatos();
+        general.add(rectangulo);
+    }
+    
+    /**
+     * metodo para crear el objeto de la clase Circulo
+     */
+    private void crearCirculo(){
+        Circulo circulo = new Circulo();
+        circulo.pedirDatos();
+        general.add(circulo);
+    }
+    
+    /**
+     * metodo para crear el objeto de la clase Triangulo
+     */
+    private void crearTriangulo(){
+        Triangulo triangulo = new Triangulo();
+        triangulo.pedirDatos();
+        general.add(triangulo);
+    }
+    
+    
+    /**
+     * metodo para crear el objeto de la clase Cubo
+     */
+    private void crearCubo(){
+        Cubo cubo = new Cubo();
+        cubo.pedirDatos();
+        general.add(cubo);
+    }
+    
+    /**
+     * metodo para crear el objeto de la clase Esfera
+     */
+    private void crearEsfera(){
+        Esfera esfera = new Esfera();
+        esfera.pedirDatos();
+        general.add(esfera);
+    }
+    
+    /**
+     * metodo para crear el objeto de la clase Piramide
+     */
+    private void crearPiramide(){
+        Piramide piramide = new Piramide();
+        piramide.pedirDatos();
+        general.add(piramide);
+    }
+    
+    /**
+     * metodo que se ejecuta si sale del programa el usuario
+     */
+    private void porDefecto(boolean estado){
+        estado=false;
+        recorrerArreglo();
+        setOpcion(false);
+    }
+
+    /**
+     * metodos publicos para acceder los atributos privados
+     * @return 
+     */
+    public boolean isOpcion() {
+        return opcion;
+    }
+
+    public void setOpcion(boolean opcion) {
+        this.opcion = opcion;
+    }
+
+    public byte getEleccion() {
+        return eleccion;
+    }
+
+    public void setEleccion(byte eleccion) {
+        this.eleccion = eleccion;
     }
 }

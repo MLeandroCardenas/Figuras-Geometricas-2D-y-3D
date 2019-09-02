@@ -47,7 +47,7 @@ public class Piramide extends FiguraTridimensional {
     public void imprimir() {
         setVolumen(hallarVolumen());
         setArea(hallarArea());
-        System.out.println("Eligio piramide: el volumen de la piramide es de " + getVolumen() + " y el area es de " + getArea());
+        System.out.println("Eligio piramide: el volumen de la piramide es de " + getVolumen() + " cm3" + " y el area es de " + getArea() + " cm2");
     }
 
     /**
